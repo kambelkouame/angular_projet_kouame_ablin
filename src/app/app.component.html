@@ -1,0 +1,12 @@
+<h1>
+  <nav>
+    <a routerLink="/home">Application de gestion des assignments</a>&nbsp;
+  </nav>
+</h1>
+<mat-slide-toggle color="primary" (click)="login()">Login</mat-slide-toggle>
+<br>
+<button mat-raised-button color="primary" (click)="peuplerBD()">Peuplet BD</button>
+<!--
+  La ligne suivante permet d'afficher le composant qui correspond à l'URL (en fonction des routes)
+-->
+<router-outlet></router-outlet>
