@@ -34,6 +34,16 @@ import { LeftSidebarComponent } from './aside/left-sidebar/left-sidebar.componen
 import { ModalHeaderComponent } from './aside/modal-header/modal-header.component';
 import { ToolbarComponent } from './aside/toolbar/toolbar.component';
 
+
+
+
+//prime ng 
+
+import {TableModule} from 'primeng/table';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+
+
 const routes:Routes = [
   {
     path: "",
@@ -69,11 +79,17 @@ const routes:Routes = [
     HeaderComponent,
     LeftSidebarComponent,
     ModalHeaderComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+
+    TableModule,
+
+
     MatButtonModule, MatDividerModule, MatIconModule,
     FormsModule, MatInputModule, MatFormFieldModule, MatDatepickerModule,
     MatListModule, MatCardModule, MatCheckboxModule, MatTableModule,
