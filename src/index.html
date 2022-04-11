@@ -2,15 +2,116 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>AssignmentApp</title>
+  <title>Posta</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <meta charset="utf-8" />
+  <link rel="shortcut icon" href="./assets/media/logos/favicon.ico" />
+  <!--begin::Fonts-->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+  <!--end::Fonts-->
+  <!--begin::Page Vendor Stylesheets(used by this page)-->
+  <link href="./assets/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
+  <!--end::Page Vendor Stylesheets-->
+  <!--begin::Global Stylesheets Bundle(used by all pages)-->
+  <link href="./assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+  <link href="./assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+  <!--begin::Page Vendor Stylesheets(used by this page)-->
+  <link href="./assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+  <!--end::Page Vendor Stylesheets-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
-<body>
+<body id="kt_body" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed aside-enabled aside-fixed">
+  <style>
+    .circle{
+      position: absolute;
+      top:50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 150px;
+      height: 150px;
+      background: #ccc;
+      border: 5px solid #3277c0;
+      border-radius: 50%;
+      overflow: hidden;
+  }
+  .wave{
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: #72bf3c;
+      border-radius: 50%;
+      box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+  }
+  .wave:before,
+  .wave:after
+  {
+      content: 'MQASH';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      top: 0;
+      left: 50%;
+      color: #3277c0;
+      transform: translate(-50%, -75%);
+  }
+  .wave:before{
+      border-radius: 45%;
+      background: rgba(255, 255, 255, 1);
+      animation: animate 5s linear infinite;
+  }
+  .wave:after{
+      border-radius: 40%;
+      background: rgba(255, 255, 255, .5);
+      animation: animate 10s linear infinite;
+  }
+  @keyframes animate{
+      0%{
+          transform: translate(-50%, -75%) rotate(0deg);
+      }
+      100%{
+          transform: translate(-50%, -75%) rotate(360deg);
+      }
+  }
+  </style>
   <app-root></app-root>
+
+  		<!--end::Scrolltop-->
+
 </body>
+
+		<!--begin::Javascript-->
+		<!--begin::Global Javascript Bundle(used by all pages)-->
+		<script src="./assets/plugins/global/plugins.bundle.js" ></script>
+		<script src="./assets/js/scripts.bundle.js"></script>
+		<!--end::Global Javascript Bundle-->
+		<!--begin::Page Vendors Javascript(used by this page)-->
+		<script src="./assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
+		<!--end::Page Vendors Javascript-->
+    <script src="./assets/js/custom/modals/create-project.bundle.js"></script>
+    <!--begin::Page Custom Javascript(used by this page)-->
+		<script src="assets/js/custom/widgets.js"></script>
+    		<!--begin::Page Vendors Javascript(used by this page)-->
+		<script src="./assets/plugins/custom/datatables/datatables.bundle.js"></script>
+    <script >
+      "use strict";
+      var KTGeneralChartJS=function(){
+        function a(a=1,e=100){
+          return Math.floor(Math.random()*(e-a)+a)
+        }function e(e=1,t=100,s=10){
+          for(var r=[],l=0;l<s;l++)r.push(a(e,t));return r
+        }
+        return{
+          init:function(){Chart.defaults.font.size=13,Chart.defaults.font.family=KTUtil.getCssVariableValue("--bs-font-sans-serif"),
+          function(){
+            var a=document.getElementById("kt_chartjs_2"),
+            t=KTUtil.getCssVariableValue("--bs-primary"),
+            s=KTUtil.getCssVariableValue("--bs-warning");KTUtil.getCssVariableValue("--bs-success"),KTUtil.getCssVariableValue("--bs-font-sans-serif");const r={labels:["Jan","fev","Mar","Avr","Mai","Juin","Juil"],datasets:[{label:"Partenaires",data:e(1,50,7),borderColor:t,backgroundColor:"transparent"},{label:"Mqash",data:e(1,50,7),borderColor:s,backgroundColor:"transparent"}]};new Chart(a,{type:"line",data:r,options:{plugins:{title:{display:!1}},responsive:!0}})}()
+              }}}();
+              KTUtil.onDOMContentLoaded((function(){KTGeneralChartJS.init()}));
+     </script>
+
+		<!--end::Page Custom Javascript-->
+
 </html>

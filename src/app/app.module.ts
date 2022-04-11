@@ -28,6 +28,11 @@ import { AddAssignmentComponent } from './assignments/add-assignment/add-assignm
 import { Routes, RouterModule } from '@angular/router';
 import { EditAssignmentComponent } from './edit-assignment/edit-assignment.component';
 import { AuthGuard } from './shared/auth.guard';
+import { FooterComponent } from './aside/footer/footer.component';
+import { HeaderComponent } from './aside/header/header.component';
+import { LeftSidebarComponent } from './aside/left-sidebar/left-sidebar.component';
+import { ModalHeaderComponent } from './aside/modal-header/modal-header.component';
+import { ToolbarComponent } from './aside/toolbar/toolbar.component';
 
 const routes:Routes = [
   {
@@ -59,7 +64,12 @@ const routes:Routes = [
     RenduDirective,
     AssignmentDetailComponent,
     AddAssignmentComponent,
-    EditAssignmentComponent
+    EditAssignmentComponent,
+    FooterComponent,
+    HeaderComponent,
+    LeftSidebarComponent,
+    ModalHeaderComponent,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,
