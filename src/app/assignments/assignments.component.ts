@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { AssignmentsService } from '../shared/assignments.service';
 import { Assignment } from './assignment.model';
-
+import { ConfirmationService } from 'primeng/api';
+import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-assignments',
   templateUrl: './assignments.component.html',
   styleUrls: ['./assignments.component.css'],
+  providers: [MessageService,ConfirmationService]
 })
 export class AssignmentsComponent implements OnInit {
   titre = 'Application de gestion des assignments !';
@@ -22,6 +24,8 @@ export class AssignmentsComponent implements OnInit {
   hasNextPage?: boolean;
   nextPage?: number;
 
+  loading = false;
+  openModal:Boolean = false
 
   constructor(private assignmentsService: AssignmentsService) {
     //console.log("dans le constructeur")
@@ -36,6 +40,7 @@ export class AssignmentsComponent implements OnInit {
   }
 
   getAssignments() {
+    this.loading = true;
     this.assignmentsService.getAssignments(this.page, this.limit)
     .subscribe((data) => {
       this.assignments = data.docs;
@@ -49,6 +54,7 @@ export class AssignmentsComponent implements OnInit {
       this.nextPage = data.nextPage;
       //console.log("Données arrivées");
     });
+    this.loading = false;
   }
 
   getColor(index: number) {
@@ -73,5 +79,13 @@ export class AssignmentsComponent implements OnInit {
   dernierePage() {
     this.page = this.totalPages;
     this.getAssignments();
+  }
+
+  updateAssignment(){
+    this.openModal=true
+
+  }
+  fermeModal(){
+    this.openModal=false
   }
 }

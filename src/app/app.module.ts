@@ -39,16 +39,21 @@ import {ToastModule} from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
-
+import {DialogModule} from 'primeng/dialog';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import {PanelMenuModule} from 'primeng/panelmenu';
+import {InputNumberModule} from 'primeng/inputnumber';
+import {RadioButtonModule} from 'primeng/radiobutton';
+
 
 import { MatTabsModule } from '@angular/material/tabs';
 
 import {MultiSelectModule} from 'primeng/multiselect';
-
-
+import {TooltipModule} from 'primeng/tooltip';
+import {SliderModule} from 'primeng/slider';
+import {RatingModule} from 'primeng/rating';
+import {InputMaskModule} from 'primeng/inputmask';
 //prime ng 
 import {ButtonModule} from 'primeng/button';
 import {TableModule} from 'primeng/table';
@@ -111,8 +116,15 @@ const routes:Routes = [
     ToolbarModule,
     FileUploadModule,
     PanelMenuModule,
-  
+    DialogModule,
+    TooltipModule,
+    SliderModule,
+    InputNumberModule,
+    RatingModule,
+    RadioButtonModule,
+    InputMaskModule,
 
+    
     MatButtonModule, MatDividerModule, MatIconModule,ReactiveFormsModule,
     FormsModule, MatInputModule, MatFormFieldModule, MatDatepickerModule,
     MatListModule, MatCardModule, MatCheckboxModule, MatTableModule,

@@ -10,52 +10,6 @@
         <label>Nb assignments par page :</label>
         <input type="range" min=5 max="100" [(ngModel)]="limit" (change)="getAssignments()"> {{limit}}
     </div>
-    <div class="pagination">
-        <button mat-stroked-button color="basic" (click)="premierePage()" [disabled]="page===1">Première Page</button>
-        <button mat-stroked-button color="basic" (click)="pagePrecedente()" [disabled]="!hasPrevPage">Page Précédente</button>
-        <button mat-stroked-button color="basic" (click)="pageSuivante()" [disabled]="!hasNextPage">Page Suivante</button>
-        <button mat-stroked-button color="basic" (click)="dernierePage()" [disabled]="page===totalPages">
-      Dernière Page
-</button>
-    </div>
-    <p>Nombre de page total : {{totalPages}}, Nombre d'assignments : {{totalDocs}}, Page courante : {{page}}, Nb d'assignments par page : {{limit}}</p>
-
-    <table mat-table [dataSource]="assignments" class="mat-elevation-z8">
-
-        <!--- Note that these columns can be defined in any order.
-        The actual rendered columns are set as a property on the row definition" -->
-
-        <!-- id Column -->
-        <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef> Id </th>
-            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-        </ng-container>
-
-        <!-- Nom Column -->
-        <ng-container matColumnDef="nom">
-            <th mat-header-cell *matHeaderCellDef> Nom </th>
-            <td mat-cell *matCellDef="let element"> {{element.nom}} </td>
-        </ng-container>
-
-
-        <!-- date de rendu Column -->
-        <ng-container matColumnDef="dateDeRendu">
-            <th mat-header-cell *matHeaderCellDef> Date de rendu </th>
-            <td mat-cell *matCellDef="let element"> {{element.dateDeRendu | date}} </td>
-        </ng-container>
-
-        <!-- Rendu Column -->
-        <ng-container matColumnDef="rendu">
-            <th mat-header-cell *matHeaderCellDef> Rendu </th>
-            <td mat-cell *matCellDef="let element"> {{element.rendu}} </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-
-
-
 
 
 
@@ -79,42 +33,170 @@
 </main>
 
 
-<div class="card">
-    <h5>Liste des assignments</h5>
-    <p-toolbar styleClass="mb-4">
-        <ng-template pTemplate="left">
-            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2"></button>
-            <button pButton pRipple label=Delete con=" pi pi-trash " class="p-button-danger "></button>
-        </ng-template>
 
-        <ng-template pTemplate="right ">
-            <p-fileUpload mode="basic " accept="image/* " [maxFileSize]="1000000 " label="Import " chooseLabel="Import " class="mr-2 inline-block "></p-fileUpload>
-            <button pButton pRipple label="Export " icon="pi pi-upload " class="p-button-help "></button>
-        </ng-template>
-    </p-toolbar>
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Post-->
+    <div class="post d-flex flex-column-fluid" id="kt_post">
+        <!--begin::Container-->
+        <div id="kt_content_container" class="container-xxl">
+            <!--begin::Card-->
+            <div class="card">
+                <!--begin::Card header-->
+                <div class="card-header border-0 pt-6">
+                    <!--begin::Card title-->
+                    <div class="card-title">
+                        <!--begin::Search-->
+                        <div class="d-flex align-items-center position-relative my-1">
+                            <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
+                            <h5>Nombres d'assignments par table: </h5> <br>
+                            <input type="range" min=5 max="100" [(ngModel)]="limit" (change)="getAssignments()"> {{limit}}
+                            <!--end::Svg Icon-->
 
-    <p-table [value]="assignments" [paginator]="true" [rows]="10" [showCurrentPageReport]="true" responsiveLayout="scroll" [rowsPerPageOptions]="[10,25,50]">
-        <ng-template pTemplate="header">
-            <tr>
-                <th>ID</th>
-                <th>Nom de l'assignment</th>
-                <th>Date de rendu</th>
-                <th>Status</th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-assign>
-            <tr>
-                <td>{{assign.id}}</td>
-                <td>{{assign.nom}}</td>
-                <td>{{assign.dateDeRendu | date }}</td>
-                <td>{{assign.rendu}}</td>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="paginatorleft">
-            <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
-        </ng-template>
-        <ng-template pTemplate="paginatorright">
-            <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
-        </ng-template>
-    </p-table>
+                        </div>
+                        <!--end::Search-->
+                    </div>
+
+
+
+                </div>
+                <!--end::Card header-->
+                <!--begin::Card body-->
+                <div class="card-body pt-0">
+                    <!--begin::Table-->
+                    <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_users">
+                        <!--begin::Table head-->
+                        <thead>
+                            <!--begin::Table row-->
+                            <tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
+                                <th class="w-10px pe-2">
+                                    <div class="form-check form-check-sm form-check-custom form-check-solid me-3">
+                                        <input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_table_users .form-check-input" value="1" />
+                                    </div>
+                                </th>
+                                <th class="min-w-125px">ID</th>
+                                <th class="min-w-125px">NON</th>
+                                <th class="min-w-125px">Date</th>
+                                <th class="min-w-125px">Status</th>
+                                <th class="min-w-125px">Actions</th>
+
+                            </tr>
+                            <!--end::Table row-->
+                        </thead>
+                        <!--end::Table head-->
+                        <!--begin::Table body-->
+                        <tbody class="text-gray-600 fw-bold" *ngIf="loading==false">
+                            <!--begin::Table row-->
+                            <tr *ngFor="let assignm of assignments">
+                                <!--begin::Checkbox-->
+                                <td>
+                                    <div class="form-check form-check-sm form-check-custom form-check-solid">
+                                        <input class="form-check-input" type="checkbox" value="1" />
+                                    </div>
+                                </td>
+                                <!--end::Checkbox-->
+                                <!--begin::User=-->
+                                <td>
+                                    {{assignm.id}}
+                                </td>
+                                <!--end::User=-->
+                                <!--begin::Role=-->
+                                <td> {{assignm.nom}}</td>
+                                <!--end::Role=-->
+                                <!--begin::Last login=-->
+                                <td>
+                                    <div class="badge badge-light fw-bolder"> {{assignm.dateDeRendu | date}}</div>
+                                </td>
+
+
+
+                                <td *ngIf="assignm.rendu ===true">
+                                    <div class="badge badge-light-success fw-bolder">rendu</div>
+                                </td>
+                                <td *ngIf="assignm.rendu ===false">
+                                    <div class="badge badge-light-warning fw-bolder">en attente</div>
+                                </td>
+
+
+                                <td>
+                                    <button pButton pRipple pTooltip="valider" type="button" icon="pi pi-check" class="p-button-rounded" *ngIf="assignm.rendu ===false"></button>
+                                    <button pButton pRipple pTooltip="voir" (click)="updateAssignment()" type="button" icon="pi pi-eye" class="p-button-rounded p-button-warning"></button>
+                                    <button pButton pRipple pTooltip="supprimer" type="button" icon="pi pi-times" class="p-button-rounded p-button-danger"></button>
+
+                                </td>
+                            </tr>
+
+                        </tbody>
+                        <!--end::Table body-->
+
+
+                    </table>
+
+                    <div class="d-flex justify-content-center">
+
+
+                        <button pButton pRipple pTooltip="permiere page" (click)="premierePage()" [disabled]="page===1" type="button" icon="pi pi-angle-double-left" class="p-button-rounded"></button>
+                        <button pButton pRipple pTooltip="precedent" (click)="pagePrecedente()" [disabled]="!hasPrevPage" type="button" icon="pi pi-angle-left" class="p-button-rounded"></button>
+                        <button pButton pRipple pTooltip="suivant" (click)="pageSuivante()" [disabled]="!hasNextPage" type="button" icon="pi pi-angle-right" class="p-button-rounded"></button>
+                        <button pButton pRipple pTooltip="derniere page" (click)="dernierePage()" [disabled]="page===totalPages" type="button" icon="pi pi-angle-double-right" class="p-button-rounded"></button>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <div class="badge badge-light fw-bolder">page : {{page}} / {{totalPages}} </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <div class="badge badge-light fw-bolder">nombre d'assignments : {{totalDocs}} </div>
+                    </div>
+
+                    <div class="d-flex justify-content-center">
+                        <div class="badge badge-light fw-bolder">nombre assignment par page : {{limit}} </div>
+                    </div>
+
+                    <div class="d-flex justify-content-center" *ngIf="loading==true">
+                        <div class="spinner-border" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                    <!--end::Table-->
+                </div>
+                <!--end::Card body-->
+            </div>
+
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Post-->
 </div>
+
+<br><br><br><br>
+<p-dialog [(visible)]="openModal" [style]="{width: '1200px'}" header="Details" [modal]="true" styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <div class="grid p-fluid">
+
+            <div class="field col-12 md:col-4">
+                <span>Basic</span>
+                <p-inputMask mask="99-999999" placeholder="99-999999"></p-inputMask>
+            </div>
+
+            <div class="field col-12 md:col-4">
+                <span>SSN</span>
+                <p-inputMask mask="999-99-9999" placeholder="999-99-9999"></p-inputMask>
+            </div>
+
+            <div class="field col-12 md:col-4">
+                <span>Date</span>
+                <p-inputMask mask="99/99/9999" placeholder="99/99/9999" slotChar="mm/dd/yyyy"></p-inputMask>
+            </div>
+
+            <div class="col-12 md:col-4">
+                <span>Phone</span>
+                <p-inputMask mask="(999) 999-9999" placeholder="(999) 999-9999"></p-inputMask>
+            </div>
+        </div>
+    </ng-template>
+
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple (click)="fermeModal()" label="Retour" icon="pi pi-times" class="p-button-text"></button>
+        <button pButton pRipple label="Modifier " icon="pi pi-check " class="p-button-text "></button>
+    </ng-template>
+</p-dialog>
