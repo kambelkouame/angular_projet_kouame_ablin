@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MenuItem} from 'primeng/api';
 
 @Component({
   selector: 'app-left-sidebar',
@@ -8,11 +9,13 @@ import { Component, OnInit } from '@angular/core';
 export class LeftSidebarComponent implements OnInit {
 
   connecte:boolean = true;
-
+  items: MenuItem[] =[];
   constructor() { }
 
   ngOnInit(): void {
     this.connecte=true;
+  
   }
+
 
 }

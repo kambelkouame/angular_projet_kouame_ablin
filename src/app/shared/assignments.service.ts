@@ -4,6 +4,9 @@ import { catchError, forkJoin, map, Observable, of, tap } from 'rxjs';
 import { Assignment } from '../assignments/assignment.model';
 import { LoggingService } from './logging.service';
 
+import { environment } from '../../environments/environment';
+
+
 import { bdInitialAssignments } from './data';
 
 @Injectable({
@@ -20,6 +23,7 @@ export class AssignmentsService {
   }
 
   url = 'http://localhost:8010/api/assignments';
+  // environment.mtacore
   //url = 'https://apimbds2022.herokuapp.com/api/assignments';
 
   getAssignments(page:number, limit:number): Observable<any> {

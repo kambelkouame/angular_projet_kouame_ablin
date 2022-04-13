@@ -16,7 +16,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatTableModule} from '@angular/material/table';
 
-import { FormsModule } from '@angular/forms'
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AssignmentsComponent } from './assignments/assignments.component';
@@ -33,13 +34,27 @@ import { HeaderComponent } from './aside/header/header.component';
 import { LeftSidebarComponent } from './aside/left-sidebar/left-sidebar.component';
 import { ModalHeaderComponent } from './aside/modal-header/modal-header.component';
 import { ToolbarComponent } from './aside/toolbar/toolbar.component';
+import { Ng9PasswordStrengthBarModule } from 'ng9-password-strength-bar';
+import {ToastModule} from 'primeng/toast';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
+import { MessageService } from 'primeng/api';
 
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
+import {PanelMenuModule} from 'primeng/panelmenu';
 
+import { MatTabsModule } from '@angular/material/tabs';
+
+import {MultiSelectModule} from 'primeng/multiselect';
 
 
 //prime ng 
-
+import {ButtonModule} from 'primeng/button';
 import {TableModule} from 'primeng/table';
+import {ToolbarModule} from 'primeng/toolbar';
+import {FileUploadModule} from 'primeng/fileupload';
+
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
@@ -52,6 +67,10 @@ const routes:Routes = [
   {
     path: "home",
     component:AssignmentsComponent
+  },
+  {
+    path: "login",
+    component:LoginComponent
   },
   {
     path: "add",
@@ -86,17 +105,24 @@ const routes:Routes = [
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-
+    Ng9PasswordStrengthBarModule,
     TableModule,
+    ButtonModule,
+    ToolbarModule,
+    FileUploadModule,
+    PanelMenuModule,
+  
 
-
-    MatButtonModule, MatDividerModule, MatIconModule,
+    MatButtonModule, MatDividerModule, MatIconModule,ReactiveFormsModule,
     FormsModule, MatInputModule, MatFormFieldModule, MatDatepickerModule,
     MatListModule, MatCardModule, MatCheckboxModule, MatTableModule,
     MatNativeDateModule, MatSlideToggleModule, HttpClientModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    ToastrModule.forRoot({positionClass: 'toast-top-center'})
   ],
-  providers: [],
+  providers: [
+   ConfirmationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
