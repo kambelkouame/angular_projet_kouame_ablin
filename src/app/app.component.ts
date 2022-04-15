@@ -18,7 +18,7 @@ export class AppComponent {
 
   login() {
     if(!this.authService.loggedIn) {
-      this.authService.logIn();
+   //   this.authService.logIn();
     } else {
       this.authService.logOut();
       this.router.navigate(["/home"]);

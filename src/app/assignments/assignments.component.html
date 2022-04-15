@@ -1,35 +1,12 @@
 <main class="container">
     <div class="ajouterBtn">
         <a routerLink="/add">
-            <button mat-flat-button color="accent">
-        Ajouter assignment
-      </button>
+
+            <button pButton pRipple type="button" label=" Ajouter assignment" class="p-button-success"></button>
         </a>
     </div>
-    <div>
-        <label>Nb assignments par page :</label>
-        <input type="range" min=5 max="100" [(ngModel)]="limit" (change)="getAssignments()"> {{limit}}
-    </div>
 
 
-
-    <mat-list *ngFor="let assignment of assignments; let i=index">
-        <nav>
-            <a routerLink="/assignment/{{assignment.id}}">
-                <h3 mat-subheader>{{assignment.dateDeRendu | date}}</h3>
-                <mat-list-item>
-                    <p *ngIf="assignment.rendu; else nonsoumis" appRendu>
-                        {{assignment.nom}} a été rendu.
-                    </p>
-
-                    <ng-template #nonsoumis>
-                        <p>{{assignment.nom}} n'a pas été rendu !</p>
-                    </ng-template>
-                    <mat-divider></mat-divider>
-                </mat-list-item>
-            </a>
-        </nav>
-    </mat-list>
 </main>
 
 
@@ -119,8 +96,8 @@
 
                                 <td>
                                     <button pButton pRipple pTooltip="valider" type="button" icon="pi pi-check" class="p-button-rounded" *ngIf="assignm.rendu ===false"></button>
-                                    <button pButton pRipple pTooltip="voir" (click)="updateAssignment()" type="button" icon="pi pi-eye" class="p-button-rounded p-button-warning"></button>
-                                    <button pButton pRipple pTooltip="supprimer" type="button" icon="pi pi-times" class="p-button-rounded p-button-danger"></button>
+                                    <a routerLink="/assignment/{{assignm.id}}"> <button pButton pRipple pTooltip="voir" type="button" icon="pi pi-eye" class="p-button-rounded p-button-warning"></button> </a>
+
 
                                 </td>
                             </tr>
@@ -167,36 +144,3 @@
 </div>
 
 <br><br><br><br>
-<p-dialog [(visible)]="openModal" [style]="{width: '1200px'}" header="Details" [modal]="true" styleClass="p-fluid">
-
-    <ng-template pTemplate="content">
-        <div class="grid p-fluid">
-
-            <div class="field col-12 md:col-4">
-                <span>Basic</span>
-                <p-inputMask mask="99-999999" placeholder="99-999999"></p-inputMask>
-            </div>
-
-            <div class="field col-12 md:col-4">
-                <span>SSN</span>
-                <p-inputMask mask="999-99-9999" placeholder="999-99-9999"></p-inputMask>
-            </div>
-
-            <div class="field col-12 md:col-4">
-                <span>Date</span>
-                <p-inputMask mask="99/99/9999" placeholder="99/99/9999" slotChar="mm/dd/yyyy"></p-inputMask>
-            </div>
-
-            <div class="col-12 md:col-4">
-                <span>Phone</span>
-                <p-inputMask mask="(999) 999-9999" placeholder="(999) 999-9999"></p-inputMask>
-            </div>
-        </div>
-    </ng-template>
-
-
-    <ng-template pTemplate="footer">
-        <button pButton pRipple (click)="fermeModal()" label="Retour" icon="pi pi-times" class="p-button-text"></button>
-        <button pButton pRipple label="Modifier " icon="pi pi-check " class="p-button-text "></button>
-    </ng-template>
-</p-dialog>

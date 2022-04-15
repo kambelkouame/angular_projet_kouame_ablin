@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
@@ -7,12 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ToolbarComponent implements OnInit {
 title = "breadcrumb"
-  connecte:boolean = true;
+  connecte:boolean = false;
+ 
+  currentUser:any
+  constructor(
+    private router: Router,
 
-  constructor() { }
+  ) { }
+  
 
   ngOnInit(): void {
-    this.connecte=true;
+   
+
+    this.currentUser = localStorage.getItem('currentUser');
+    console.log( this.currentUser )
+    if (this.currentUser) {
+     this.connecte =true
+}
+
   }
 
 }

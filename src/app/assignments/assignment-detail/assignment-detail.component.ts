@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AssignmentsService } from 'src/app/shared/assignments.service';
 import { AuthService } from 'src/app/shared/auth.service';
 import { Assignment } from '../assignment.model';
-
+import {MenuItem} from 'primeng/api';
 @Component({
   selector: 'app-assignment-detail',
   templateUrl: './assignment-detail.component.html',
@@ -11,13 +11,22 @@ import { Assignment } from '../assignment.model';
 })
 export class AssignmentDetailComponent implements OnInit {
   assignmentTransmis?: Assignment;
-
+   items: MenuItem[]=[];
+   home: MenuItem={};
   constructor(private assignmentsService: AssignmentsService,
               private route:ActivatedRoute,
               private router:Router,
               private authService:AuthService) {}
 
   ngOnInit(): void {
+
+
+    this.items = [
+      {label:'assignment', url: '/home'},
+      {label:'details'}
+    
+  ];
+  this.home = {icon: 'pi pi-home', routerLink: '/'};
     // le + force la conversion "string" vers "number"
     const id:number = +this.route.snapshot.params['id'];
 

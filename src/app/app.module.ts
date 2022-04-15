@@ -46,9 +46,9 @@ import {PanelMenuModule} from 'primeng/panelmenu';
 import {InputNumberModule} from 'primeng/inputnumber';
 import {RadioButtonModule} from 'primeng/radiobutton';
 
-
+import {CalendarModule} from 'primeng/calendar';
 import { MatTabsModule } from '@angular/material/tabs';
-
+import {CardModule} from 'primeng/card';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {TooltipModule} from 'primeng/tooltip';
 import {SliderModule} from 'primeng/slider';
@@ -59,10 +59,12 @@ import {ButtonModule} from 'primeng/button';
 import {TableModule} from 'primeng/table';
 import {ToolbarModule} from 'primeng/toolbar';
 import {FileUploadModule} from 'primeng/fileupload';
-
+import {BadgeModule} from 'primeng/badge';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
+import {BreadcrumbModule} from 'primeng/breadcrumb';
+import {InputTextModule} from 'primeng/inputtext';
 
 const routes:Routes = [
   {
@@ -123,7 +125,7 @@ const routes:Routes = [
     RatingModule,
     RadioButtonModule,
     InputMaskModule,
-
+    CalendarModule,CardModule,BadgeModule,BreadcrumbModule,InputTextModule,
     
     MatButtonModule, MatDividerModule, MatIconModule,ReactiveFormsModule,
     FormsModule, MatInputModule, MatFormFieldModule, MatDatepickerModule,

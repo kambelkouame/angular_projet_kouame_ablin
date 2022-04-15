@@ -6,14 +6,25 @@ import { Injectable } from '@angular/core';
 export class AuthService {
   loggedIn = false;
 
+  user = [
+    { username: "ablin", password: "azerty", role: "admin" },
+    { username: "kambel", password: "azerty", role: "admin" },
+    { username: "bobo", password: "azerty", role: "user" },
+    { username: "kissi", password: "azerty", role: "user" },
+    { username: "mbds", password: "azerty", role: "user" },
+    { username: "djo", password: "azerty", role: "admin" },
+    { username: "killmongo", password: "azerty", role: "admin" }
+  ]
+
   constructor() { }
 
-  logIn() {
+  logIn(data:any) {
     // devrait prendre un login et un password en paramètres...
     this.loggedIn = true;
   }
 
   logOut() {
+    localStorage.removeItem('currentUser');
     this.loggedIn = false;
   }
 

@@ -1,16 +1,26 @@
+<div class="grid p-fluid">
+    <p-breadcrumb [model]="items" [home]="home"></p-breadcrumb>
+</div>
+<br><br><br>
+
+
 <form ngForm #assignmentForm class="form" (submit)="onSubmit(); assignmentForm.reset()">
-  <mat-form-field>
-    <input matInput placeholder="Nom de l'assignment" [(ngModel)]="nomAssignment" name="nom">
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Date rendu</mat-label>
-    <input matInput [matDatepicker]="picker" [(ngModel)]="dateDeRenduAssignment" name="date">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
+    <p-card header="Ajouter un Assignment" class="d-flex justify-content-center">
+        <div class=" grid p-fluid">
+            <div class="col-12 md:col-6 lg:col-4">
+                <span>Nom de L'assignment</span>
+                <input type="text" pInputText [(ngModel)]="nomAssignment" name="nom">
+            </div>
 
-  <button mat-stroked-button color="primary">
-    Ajouter un devoir
-  </button>
+            <div class="col-12 md:col-6 lg:col-4">
+                <span>Date de rendu</span>
+                <p-calendar [(ngModel)]="dateDeRenduAssignment" name="date" [disabledDates]="invalidDates" [disabledDays]="[0,6]" [readonlyInput]="true" inputId="disabledays"></p-calendar>
+            </div>
+            <br> <br>
+            <div class="col-12 md:col-6 lg:col-4">
+
+                <button pButton pRipple type="submit" label="valider"></button>
+            </div>
+        </div>
+    </p-card>
 </form>
-
