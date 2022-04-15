@@ -25,9 +25,9 @@
                 Rendu
             </mat-checkbox>
 
-            <button mat-raised-button color="primary" [disabled]="!isAdmin()" (click)="onClickEdit()">EDIT</button>
+            <button mat-raised-button color="primary" (click)="onClickEdit()">EDIT</button>
 
-            <button mat-flat-button color="warn" (click)="onDeleteAssignment()">DELETE</button>
+            <button mat-flat-button color="warn" [disabled]="!isAdmin()" (click)="onDeleteAssignment()">DELETE</button>
         </ng-template>
     </p-card>
 </div>
