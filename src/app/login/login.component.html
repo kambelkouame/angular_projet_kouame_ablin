@@ -67,6 +67,31 @@
         </div>
         <!--end::Content-->
         <!--begin::Footer-->
+        <br><br><br><br>
+
+
+        <div class="d-flex justify-content-center">
+            <p-card header="Utilisateurs" [style]="{width: '700px'}" styleClass="p-card-shadow">
+                <ng-template pTemplate="header">
+
+                </ng-template>
+                <div *ngFor="let USER of user">
+                    <h3>username : {{USER.username}}</h3>
+
+                    <h3>
+                        password :
+                        <div class="badge badge-light-success fw-bolder">{{USER.password}}</div>
+                    </h3>
+                    <h3>
+                        Role :
+                        <div class="badge badge-light-success fw-bolder">{{USER.role}}</div>
+                    </h3>
+                    <hr>
+                </div>
+
+
+            </p-card>
+        </div>
         <div class="d-flex flex-center flex-column-auto p-10">
             <!--begin::Links-->
             <div class="d-flex align-items-center fw-bold fs-6">
