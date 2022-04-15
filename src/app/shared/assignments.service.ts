@@ -22,9 +22,9 @@ export class AssignmentsService {
     this.loggingService.setLoggingLevel(1);
   }
 
-  url = 'http://localhost:8010/api/assignments';
+  //url = 'http://localhost:8010/api/assignments';
   // environment.mtacore
-  //url = 'https://apimbds2022.herokuapp.com/api/assignments';
+  url = 'https://web-service-kouame-ablin.herokuapp.com/api/assignments';
 
   getAssignments(page:number, limit:number): Observable<any> {
     //return of(this.assignments);
