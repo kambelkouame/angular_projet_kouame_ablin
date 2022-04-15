@@ -3,6 +3,9 @@ import { AssignmentsService } from '../shared/assignments.service';
 import { Assignment } from './assignment.model';
 import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
+import { ActivatedRoute, Router } from '@angular/router'
+
+import { AuthService } from '../shared/auth.service';;
 @Component({
   selector: 'app-assignments',
   templateUrl: './assignments.component.html',
@@ -23,22 +26,41 @@ export class AssignmentsComponent implements OnInit {
   prevPage?: number;
   hasNextPage?: boolean;
   nextPage?: number;
-
+  reloadOpt =false
   loading = false;
   openModal:Boolean = false
 
-  constructor(private assignmentsService: AssignmentsService) {
+  constructor(private assignmentsService: AssignmentsService,
+    private router:Router,
+    private authService: AuthService,
+    ) {
     //console.log("dans le constructeur")
   }
 
   // appelé avant l'affichage
   ngOnInit(): void {
     //console.log("dans le ngInit")
-
+    //location.reload();
     this.getAssignments();
     //console.log("assignmentsService.getAssignments() appelé...");
+  //  if( this.reloadOpt==false){
+    //  this.reloadOnly()
+  //  }
+   
+  // this.reloadOpt=true
   }
 
+
+logout(){
+  console.log("qdslmfkjlmkj")
+}
+   logOut() {
+    console.log('hello')
+    this.authService.logOut();
+    this.router.navigate(['login']);
+  //location.reload();
+  }
+  
   getAssignments() {
     this.loading = true;
     this.assignmentsService.getAssignments(this.page, this.limit)
@@ -53,8 +75,10 @@ export class AssignmentsComponent implements OnInit {
       this.hasNextPage = data.hasNextPage;
       this.nextPage = data.nextPage;
       //console.log("Données arrivées");
+
+      this.loading = false;
     });
-    this.loading = false;
+    
   }
 
   getColor(index: number) {
@@ -80,12 +104,19 @@ export class AssignmentsComponent implements OnInit {
     this.page = this.totalPages;
     this.getAssignments();
   }
+ reloadOnly(){
+   if(this.reloadOpt==false){
+    location.reload();
+   }
+  
+ }
 
-  updateAssignment(){
-    this.openModal=true
-
-  }
-  fermeModal(){
-    this.openModal=false
+  peuplerBD() {
+    this.assignmentsService.peuplerBDAvecForkJoin()
+    .subscribe(() => {
+      console.log("TOUS LES AJOUTS ONT ETE REALISES");
+      // on peut alors afficher la liste
+      this.router.navigate(["/home"]);
+    })
   }
 }

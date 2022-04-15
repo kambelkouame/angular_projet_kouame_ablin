@@ -1,44 +1,27 @@
-<!--s<h1>
-  <nav>
-    <a routerLink="/home">Application de gestion des assignments</a>&nbsp;
-  </nav>
-</h1>
-<mat-slide-toggle color="primary" (click)="login()">Login</mat-slide-toggle>
-<br>
-<button mat-raised-button color="primary" (click)="peuplerBD()">Peuplet BD</button>
-
-  La ligne suivante permet d'afficher le composant qui correspond à l'URL (en fonction des routes)
--->
-
-
 <!--begin::Main-->
-		<!--begin::Root-->
-		<div class="d-flex flex-column flex-root">
-			<!--begin::Page-->
-			<div class="page d-flex flex-row flex-column-fluid">
-				<app-left-sidebar></app-left-sidebar>
-				<!--begin::Wrapper-->
-				<div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
-					<!--begin::Header-->
-					<app-header></app-header>
-					<!--end::Header-->
-					<app-toolbar></app-toolbar>
 
+<!--begin::Root-->
+<div class="d-flex flex-column flex-root">
+    <!--begin::Page-->
+    <div class="page d-flex flex-row flex-column-fluid">
 
-<router-outlet></router-outlet>
-
-
-<app-footer></app-footer>
-</div>
-<!--end::Wrapper-->
-</div>
-<!--end::Page-->
-<style>
-.bg-light{
-  background-color:#fff
-}
-</style>
+        <app-left-sidebar *ngIf="currentUser"></app-left-sidebar>
+        <!--begin::Wrapper-->
+        <div [ngClass]="currentUser ? 'wrapper d-flex flex-column flex-row-fluid' : 'd-flex flex-column flex-column-fluid bgi-position-y-bottom position-x-center bgi-no-repeat bgi-size-contain bgi-attachment-fixed'" id="kt_wrapper">
+            <!--begin::Header-->
+            <app-header *ngIf="currentUser"></app-header>
+            <!--end::Header-->
+            <!-- <app-toolbar *ngIf="currentUser"></app-toolbar> -->
+            <router-outlet></router-outlet>
+            <app-footer *ngIf="currentUser"></app-footer>
+        </div>
+        <!--end::Wrapper-->
+    </div>
+    <!--end::Page-->
+    <style>
+        .bg-light {
+            background-color: #fff
+        }
+    </style>
 </div>
 <!--end::Root-->
-<app-modal-header></app-modal-header>
-<script src="./assets/js/scripts.bundle.js"></script>

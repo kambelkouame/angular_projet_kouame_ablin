@@ -67,22 +67,19 @@ import {BreadcrumbModule} from 'primeng/breadcrumb';
 import {InputTextModule} from 'primeng/inputtext';
 
 const routes:Routes = [
-  {
-    path: "",
-    component:AssignmentsComponent,
-  },
-  {
-    path: "home",
-    component:AssignmentsComponent
-  },
-  {
-    path: "login",
-    component:LoginComponent
-  },
+  {path:'',redirectTo:'login', pathMatch: 'full' },
+ 
   {
     path: "add",
     component:AddAssignmentComponent
+  },{
+    path: "login",
+    component:LoginComponent
+  }, {
+    path: "home",
+    component:AssignmentsComponent
   },
+  
   {
     path: "assignment/:id",
     component:AssignmentDetailComponent

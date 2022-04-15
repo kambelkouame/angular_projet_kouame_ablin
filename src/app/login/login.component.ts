@@ -54,17 +54,13 @@ currentUser :any
 
     });
 
-    this.firstForm = this.formBuilder.group({
-      newPassword: ['', Validators.required],
-      reNewpassword: ['', Validators.required],
-    });
 
-
+   
     this.currentUser = localStorage.getItem('currentUser');
     console.log( this.currentUser )
-    if (this.currentUser) {
+  /*  if (this.currentUser !==null) {
       this.router.navigate(['home']);
-}
+}*/
   }
 
   // convenience getter for easy access to form fields
@@ -97,11 +93,14 @@ currentUser :any
 
     if (find === true) {
       this.notificationService.showSuccess("Bienvenue", "succes")
-      this.router.navigate(['home']);
+      this.router.navigate(['home']).then(() => {
+        window.location.reload();
+      });
       this.submitted = false;
       this.loading = false
       localStorage.setItem('currentUser', JSON.stringify(this.userConnect));
       console.log(this.userConnect)
+     // location.reload();
       return;
     } else {
       this.notificationService.showError("Erreur", "Erreur d'identification")

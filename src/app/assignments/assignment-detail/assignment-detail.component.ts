@@ -13,6 +13,8 @@ export class AssignmentDetailComponent implements OnInit {
   assignmentTransmis?: Assignment;
    items: MenuItem[]=[];
    home: MenuItem={};
+   loading=false
+   currentUser:any
   constructor(private assignmentsService: AssignmentsService,
               private route:ActivatedRoute,
               private router:Router,
@@ -20,12 +22,22 @@ export class AssignmentDetailComponent implements OnInit {
 
   ngOnInit(): void {
 
-
+    this.loading=true
     this.items = [
       {label:'assignment', url: '/home'},
       {label:'details'}
     
   ];
+
+
+  this.currentUser = localStorage.getItem('currentUser');
+  console.log(this.currentUser)
+  
+  this.currentUser =JSON.parse(this.currentUser)
+  console.log( this.currentUser)
+
+
+
   this.home = {icon: 'pi pi-home', routerLink: '/'};
     // le + force la conversion "string" vers "number"
     const id:number = +this.route.snapshot.params['id'];
@@ -36,6 +48,7 @@ export class AssignmentDetailComponent implements OnInit {
     this.assignmentsService.getAssignment(id)
     .subscribe(assignment => {
       this.assignmentTransmis = assignment;
+      this.loading=false
     })
   }
 
@@ -86,6 +99,11 @@ export class AssignmentDetailComponent implements OnInit {
   }
 
   isAdmin():boolean {
-    return this.authService.loggedIn;
+    if(this.currentUser.role =="admin"){
+      return true
+    }else{
+      return false
+    }
+   // return this.authService.loggedIn;
   }
 }

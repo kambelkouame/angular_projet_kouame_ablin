@@ -21,7 +21,7 @@ export class AuthGuard implements CanActivate {
         return true;
       } else {
         console.log("Je suis un méchant gardien, je n'autorise pas la navigation")
-        this.router.navigate(["/home"]);
+        this.router.navigate(["/login"]);
         return false;
       }
     })

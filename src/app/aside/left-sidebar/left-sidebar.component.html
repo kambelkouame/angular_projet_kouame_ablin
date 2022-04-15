@@ -1,30 +1,52 @@
-<!--begin::Aside-->
-<div *ngIf="connecte" id="kt_aside" class="aside pb-5 pt-5 pt-lg-0 bg-light" data-kt-drawer="true" data-kt-drawer-name="aside" data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true" data-kt-drawer-width="{default:'80px', '300px': '100px'}"
-    data-kt-drawer-direction="start" data-kt-drawer-toggle="#kt_aside_mobile_toggle">
-    <!--begin::Brand-->
-    <div class="aside-logo py-8 bg-light" id="kt_aside_logo">
-        <!--begin::Logo-->
-        <a routerLink="/" class="d-flex align-items-center">
-            <img alt="Logo" src="../../assets/media/mqash-logo.png" class="h-45px logo" />
-        </a>
-        <!--end::Logo-->
+<div id="kt_aside" class="aside" data-kt-drawer="true" data-kt-drawer-name="aside" data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true" data-kt-drawer-width="{default:'200px', '300px': '250px'}" data-kt-drawer-direction="start"
+    data-kt-drawer-toggle="#kt_aside_mobile_toggle">
+    <!--begin::Aside Toolbarl-->
+    <div class="aside-toolbar flex-column-auto" id="kt_aside_toolbar">
+        <!--begin::User-->
+        <div class="aside-user d-flex align-items-sm-center justify-content-center py-5">
+            <!--begin::Symbol-->
+            <div class="symbol symbol-25px">
+                <img src="assets/media/avatars/150-26.jpg" alt="" />
+            </div>
+
+        </div>
+        <!--end::User-->
+
+        <!--end::Aside user-->
     </div>
-    <!--end::Brand-->
+    <!--end::Aside Toolbarl-->
     <!--begin::Aside menu-->
-    <div class="aside-menu flex-column-fluid" id="kt_aside_menu">
+    <div class="aside-menu flex-column-fluid">
         <!--begin::Aside Menu-->
-        <div class="hover-scroll-overlay-y my-2 my-lg-5 pe-lg-n1" id="kt_aside_menu_wrapper" data-kt-scroll="true" data-kt-scroll-height="auto" data-kt-scroll-dependencies="#kt_aside_logo, #kt_aside_footer" data-kt-scroll-wrappers="#kt_aside, #kt_aside_menu"
-            data-kt-scroll-offset="5px">
+        <div class="hover-scroll-overlay-y px-2 my-5 my-lg-5" id="kt_aside_menu_wrapper" data-kt-scroll="true" data-kt-scroll-height="auto" data-kt-scroll-dependencies="{default: '#kt_aside_toolbar, #kt_aside_footer', lg: '#kt_header, #kt_aside_toolbar, #kt_aside_footer'}"
+            data-kt-scroll-wrappers="#kt_aside_menu" data-kt-scroll-offset="5px">
             <!--begin::Menu-->
-            <div class="menu menu-column menu-title-gray-700 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500 fw-bold" id="#kt_aside_menu" data-kt-menu="true">
-                <div style="color:#3d7cb2 ; " class="menu-item py-2">
-                    <a class="menu-link active menu-center bg-light" routerLink="/" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
-                        <span class="menu-icon me-0">
-                            <i style="color:#3d7cb2" class="bi bi-bank fs-2"></i>
+            <div class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500" id="#kt_aside_menu" data-kt-menu="true">
+
+                <div class="menu-item">
+                    <a class="menu-link" routerLinkActive="active" routerLink="/home">
+                        <span class="menu-icon">
+                            <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
+                            <span class="svg-icon svg-icon-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none">
+                                    <rect x="2" y="2" width="9" height="9" rx="2" fill="black" />
+                                    <rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2" fill="black" />
+                                    <rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2" fill="black" />
+                                    <rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2" fill="black" />
+                                </svg>
+                            </span>
+                        <!--end::Svg Icon-->
                         </span>
-                        <span style="color:#3d7cb2" class="menu-title">Dashboard</span>
+                        <span class="menu-title">Dashboard</span>
                     </a>
                 </div>
+
+
+
+
+
+
 
 
             </div>
@@ -33,5 +55,6 @@
         <!--end::Aside Menu-->
     </div>
     <!--end::Aside menu-->
+
 </div>
 <!--end::Aside-->

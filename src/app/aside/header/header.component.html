@@ -1,4 +1,4 @@
-<div id="kt_header" class="header align-items-stretch" *ngIf="connecte">
+<div id="kt_header" class="header align-items-stretch">
     <!--begin::Container-->
     <div class="container-fluid d-flex align-items-stretch justify-content-between">
         <!--begin::Aside mobile toggle-->
@@ -120,7 +120,7 @@
                     <!--begin::Notifications-->
                     <div class="d-flex align-items-center ms-1 ms-lg-3">
 
-                        <button pButton pRipple (clik)="logOut()" icon="pi pi-power-off" type="button" label="Déconnexion"></button>
+                        <button pButton pRipple type="button" (click)=" logOut()" label=" Deconnexion " class="p-button-danger"></button>
 
                         <!--begin::Menu-->
 
@@ -132,15 +132,11 @@
                         <!--begin::Menu wrapper-->
                         <div class="cursor-pointer symbol symbol-30px symbol-md-40px " data-kt-menu-trigger="click " data-kt-menu-attach="parent " data-kt-menu-placement="bottom-end ">
                             <img src="assets/media/avatars/150-26.jpg " alt="image " />
+                            <div class="badge badge-light fw-bolder ">{{currentUser.username}} </div> /
+                            <div class="badge badge-light fw-bolder ">{{currentUser.role}}</div>
 
                         </div>
-                        <div class="d-flex flex-column ">
-                            <div class="fw-bolder d-flex align-items-center fs-5 ">
-                                <h3 class="text-white fw-bold px-9 mt-10 mb-6 ">{{currentUser.username}}
-                                </h3>
-                            </div>
 
-                        </div>
 
                         <!--end::Menu wrapper-->
                     </div>

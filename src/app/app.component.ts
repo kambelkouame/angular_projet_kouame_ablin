@@ -11,10 +11,29 @@ import { AuthService } from './shared/auth.service';
 
 export class AppComponent {
   title = 'Première application angular sur heroku';
-
+  currentUser:any
+  state :Boolean=false
   constructor(private authService:AuthService,
     private router:Router,
-    private assignmentsService:AssignmentsService) {}
+    private assignmentsService:AssignmentsService) {
+
+
+     
+    }
+
+
+    ngOnInit() {
+
+      this.currentUser = localStorage.getItem('currentUser');
+      console.log( this.currentUser ) 
+      if( this.currentUser ==null){
+        this.state ==false
+
+      }else{
+        this.state=true
+      }
+
+    }
 
   login() {
     if(!this.authService.loggedIn) {
